@@ -29,6 +29,7 @@ namespace ExampleUsage
             PrintUsingColor("[1] Register an user", ConsoleColor.Green);
             PrintUsingColor("[2] Fetch information about Spare Time Teaching", ConsoleColor.Green);
             PrintUsingColor("[3] Fetch a list of challenges", ConsoleColor.Green);
+            PrintUsingColor("[4] Fetch a list of events", ConsoleColor.Green);
 
             var input = Console.ReadLine();
             if (input == "1")
@@ -51,6 +52,10 @@ namespace ExampleUsage
             {
                 PrintChallenges();
             }
+            else if (input == "4")
+            {
+                PrintEvents();
+            }
             else
             {
                 return;  
@@ -63,6 +68,14 @@ namespace ExampleUsage
             foreach (var challenge in spareTimeTeaching.GetChallenges())
             {
                 Console.WriteLine(challenge);
+            }
+        }
+
+        static void PrintEvents()
+        {
+            foreach (var events in spareTimeTeaching.GetEvents())
+            {
+                Console.WriteLine(events);
             }
         }
 

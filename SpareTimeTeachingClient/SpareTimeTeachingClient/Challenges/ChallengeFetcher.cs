@@ -30,7 +30,7 @@ namespace SpareTimeTeachingClient.Challenges
                     offset += 10;
                     rows.AddRange(tableRows);
                 }
-                else
+                if (tableRows.Count() != 10)
                 {
                     offset = null;
                 }

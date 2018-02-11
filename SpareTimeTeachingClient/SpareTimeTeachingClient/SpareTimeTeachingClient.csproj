@@ -46,6 +46,8 @@
     <Compile Include="About\AboutFetcher.cs" />
     <Compile Include="Challenges\ChallengeFetcher.cs" />
     <Compile Include="Challenges\ChallengeInformation.cs" />
+    <Compile Include="Events\EventFetcher.cs" />
+    <Compile Include="Events\EventInformation.cs" />
     <Compile Include="User\RegisterResponse.cs" />
     <Compile Include="WebClients\IWebClient.cs" />
     <Compile Include="WebClients\SmartWebClient.cs" />

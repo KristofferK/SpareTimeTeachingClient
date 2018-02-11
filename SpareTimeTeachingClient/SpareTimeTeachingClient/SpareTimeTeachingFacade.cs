@@ -1,5 +1,6 @@
 ﻿using SpareTimeTeachingClient.About;
 using SpareTimeTeachingClient.Challenges;
+using SpareTimeTeachingClient.Events;
 using SpareTimeTeachingClient.User;
 using SpareTimeTeachingClient.WebClients;
 using System;
@@ -27,6 +28,11 @@ namespace SpareTimeTeachingClient
         public IEnumerable<ChallengeInformation> GetChallenges()
         {
             return new ChallengeFetcher(webClient).FetchAll();
+        }
+
+        public IEnumerable<EventInformation> GetEvents()
+        {
+            return new EventFetcher(webClient).FetchAll();
         }
     }
 }
