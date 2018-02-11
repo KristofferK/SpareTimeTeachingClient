@@ -5,3 +5,4 @@ Simple client that interact with sparetimeteaching.dk
 * Register user
 * Fetch information from the about-page
 * Fetch all challenges
+* Fetch all events
