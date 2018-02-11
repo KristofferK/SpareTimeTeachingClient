@@ -14,10 +14,48 @@ namespace ExampleUsage
 
         static void Main(string[] args)
         {
+            Console.Title = "Spare Time Teaching Client";
             spareTimeTeaching = new SpareTimeTeachingFacade();
-            RegisterAnUser();
-            PrintAboutInformation();
-            PrintChallenges();
+            while (true)
+            {
+                AskForUserInput();
+            }
+        }
+
+        private static void AskForUserInput()
+        {
+            Console.Clear();
+            PrintUsingColor("You've the following options:", ConsoleColor.Cyan);
+            PrintUsingColor("[1] Register an user", ConsoleColor.Green);
+            PrintUsingColor("[2] Fetch information about Spare Time Teaching", ConsoleColor.Green);
+            PrintUsingColor("[3] Fetch a list of challenges", ConsoleColor.Green);
+
+            var input = Console.ReadLine();
+            if (input == "1")
+            {
+                PrintUsingColor("Name: ", ConsoleColor.Magenta, false);
+                var name = Console.ReadLine();
+
+                PrintUsingColor("Email: ", ConsoleColor.Magenta, false);
+                var email = Console.ReadLine();
+
+                PrintUsingColor("Password: ", ConsoleColor.Magenta, false);
+                var password = Console.ReadLine();
+                RegisterAnUser(name, email, password);
+            }
+            else if (input == "2")
+            {
+                PrintAboutInformation();
+            }
+            else if (input == "3")
+            {
+                PrintChallenges();
+            }
+            else
+            {
+                return;  
+            }
+            Console.ReadLine();
         }
 
         static void PrintChallenges()
@@ -34,23 +72,24 @@ namespace ExampleUsage
             PrintUsingColor(about, ConsoleColor.Yellow);
         }
 
-        static void RegisterAnUser()
+        static void RegisterAnUser(string name, string email, string password)
         {
             var response = spareTimeTeaching.Register(new UserInformation()
             {
-                Email = "test123456@email.com",
-                Name = "Test Account123",
-                Password = "123456"
+                Email = email,
+                Name = name,
+                Password = password
             });
             var color = response.Success ? ConsoleColor.Green : ConsoleColor.Red;
             PrintUsingColor(response, color);
         }
 
-        private static void PrintUsingColor(object o, ConsoleColor color)
+        private static void PrintUsingColor(object o, ConsoleColor color, bool breakline = true)
         {
             var currentColor = Console.ForegroundColor;
             Console.ForegroundColor = color;
-            Console.WriteLine(o);
+            if (breakline) Console.WriteLine(o);
+            else Console.Write(o);
             Console.ForegroundColor = currentColor;
         }
     }
